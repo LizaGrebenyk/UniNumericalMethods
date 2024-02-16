@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-namespace NumericalMethods {
-
+namespace NumericalMethods
+{
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -64,6 +64,25 @@ namespace NumericalMethods {
 
 	private: System::Windows::Forms::GroupBox^ solution;
 	private: System::Windows::Forms::Button^ solveButton;
+	private: System::Windows::Forms::GroupBox^ Errors;
+
+	private: System::Windows::Forms::TextBox^ b1a;
+
+	private: System::Windows::Forms::Label^ b3ab;
+	private: System::Windows::Forms::TextBox^ b2a;
+
+	private: System::Windows::Forms::Label^ b2ab;
+	private: System::Windows::Forms::TextBox^ b3a;
+
+	private: System::Windows::Forms::Label^ b1ab;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ b1r;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ b2r;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::TextBox^ b3r;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label2;
 
 	protected:
 
@@ -104,7 +123,23 @@ namespace NumericalMethods {
 			this->x3s = (gcnew System::Windows::Forms::Label());
 			this->solution = (gcnew System::Windows::Forms::GroupBox());
 			this->solveButton = (gcnew System::Windows::Forms::Button());
+			this->Errors = (gcnew System::Windows::Forms::GroupBox());
+			this->b1r = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->b2r = (gcnew System::Windows::Forms::TextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->b3r = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->b1a = (gcnew System::Windows::Forms::TextBox());
+			this->b3ab = (gcnew System::Windows::Forms::Label());
+			this->b2a = (gcnew System::Windows::Forms::TextBox());
+			this->b2ab = (gcnew System::Windows::Forms::Label());
+			this->b3a = (gcnew System::Windows::Forms::TextBox());
+			this->b1ab = (gcnew System::Windows::Forms::Label());
 			this->solution->SuspendLayout();
+			this->Errors->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// a11
@@ -498,7 +533,7 @@ namespace NumericalMethods {
 			this->solution->Controls->Add(this->x1s);
 			this->solution->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->solution->Location = System::Drawing::Point(373, 236);
+			this->solution->Location = System::Drawing::Point(334, 236);
 			this->solution->Name = L"solution";
 			this->solution->Size = System::Drawing::Size(251, 214);
 			this->solution->TabIndex = 30;
@@ -517,12 +552,240 @@ namespace NumericalMethods {
 			this->solveButton->UseVisualStyleBackColor = true;
 			this->solveButton->Click += gcnew System::EventHandler(this, &MainForm::solveButton_Click);
 			// 
+			// Errors
+			// 
+			this->Errors->Controls->Add(this->b1r);
+			this->Errors->Controls->Add(this->label3);
+			this->Errors->Controls->Add(this->b2r);
+			this->Errors->Controls->Add(this->label4);
+			this->Errors->Controls->Add(this->b3r);
+			this->Errors->Controls->Add(this->label5);
+			this->Errors->Controls->Add(this->label2);
+			this->Errors->Controls->Add(this->label1);
+			this->Errors->Controls->Add(this->b1a);
+			this->Errors->Controls->Add(this->b3ab);
+			this->Errors->Controls->Add(this->b2a);
+			this->Errors->Controls->Add(this->b2ab);
+			this->Errors->Controls->Add(this->b3a);
+			this->Errors->Controls->Add(this->b1ab);
+			this->Errors->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Errors->Location = System::Drawing::Point(623, 236);
+			this->Errors->Name = L"Errors";
+			this->Errors->Size = System::Drawing::Size(554, 237);
+			this->Errors->TabIndex = 32;
+			this->Errors->TabStop = false;
+			this->Errors->Text = L"Errors";
+			// 
+			// b1r
+			// 
+			this->b1r->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->b1r->Enabled = false;
+			this->b1r->Font = (gcnew System::Drawing::Font(L"Courier New", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b1r->Location = System::Drawing::Point(397, 80);
+			this->b1r->Name = L"b1r";
+			this->b1r->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->b1r->Size = System::Drawing::Size(133, 34);
+			this->b1r->TabIndex = 37;
+			this->b1r->Tag = L"";
+			this->b1r->Text = L"0";
+			this->b1r->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->ForeColor = System::Drawing::Color::Black;
+			this->label3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label3->Location = System::Drawing::Point(292, 178);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(99, 31);
+			this->label3->TabIndex = 40;
+			this->label3->Text = L"b3 - ";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// b2r
+			// 
+			this->b2r->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->b2r->Enabled = false;
+			this->b2r->Font = (gcnew System::Drawing::Font(L"Courier New", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b2r->Location = System::Drawing::Point(397, 128);
+			this->b2r->Name = L"b2r";
+			this->b2r->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->b2r->Size = System::Drawing::Size(133, 34);
+			this->b2r->TabIndex = 35;
+			this->b2r->Tag = L"";
+			this->b2r->Text = L"0";
+			this->b2r->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->ForeColor = System::Drawing::Color::Black;
+			this->label4->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label4->Location = System::Drawing::Point(292, 131);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(99, 31);
+			this->label4->TabIndex = 39;
+			this->label4->Text = L"b2 - ";
+			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// b3r
+			// 
+			this->b3r->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->b3r->Enabled = false;
+			this->b3r->Font = (gcnew System::Drawing::Font(L"Courier New", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b3r->Location = System::Drawing::Point(397, 175);
+			this->b3r->Name = L"b3r";
+			this->b3r->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->b3r->Size = System::Drawing::Size(133, 34);
+			this->b3r->TabIndex = 36;
+			this->b3r->Tag = L"";
+			this->b3r->Text = L"0";
+			this->b3r->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->ForeColor = System::Drawing::Color::Black;
+			this->label5->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label5->Location = System::Drawing::Point(292, 83);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(99, 31);
+			this->label5->TabIndex = 38;
+			this->label5->Text = L"b1 - ";
+			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::Color::Black;
+			this->label2->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label2->Location = System::Drawing::Point(292, 34);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(150, 31);
+			this->label2->TabIndex = 34;
+			this->label2->Text = L"Relative";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::Black;
+			this->label1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label1->Location = System::Drawing::Point(26, 34);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(150, 31);
+			this->label1->TabIndex = 33;
+			this->label1->Text = L"Absolute";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// b1a
+			// 
+			this->b1a->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->b1a->Enabled = false;
+			this->b1a->Font = (gcnew System::Drawing::Font(L"Courier New", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b1a->Location = System::Drawing::Point(131, 85);
+			this->b1a->Name = L"b1a";
+			this->b1a->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->b1a->Size = System::Drawing::Size(133, 34);
+			this->b1a->TabIndex = 13;
+			this->b1a->Tag = L"";
+			this->b1a->Text = L"0";
+			this->b1a->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// b3ab
+			// 
+			this->b3ab->AutoSize = true;
+			this->b3ab->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b3ab->ForeColor = System::Drawing::Color::Black;
+			this->b3ab->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->b3ab->Location = System::Drawing::Point(26, 183);
+			this->b3ab->Name = L"b3ab";
+			this->b3ab->Size = System::Drawing::Size(99, 31);
+			this->b3ab->TabIndex = 29;
+			this->b3ab->Text = L"b3 - ";
+			this->b3ab->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// b2a
+			// 
+			this->b2a->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->b2a->Enabled = false;
+			this->b2a->Font = (gcnew System::Drawing::Font(L"Courier New", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b2a->Location = System::Drawing::Point(131, 133);
+			this->b2a->Name = L"b2a";
+			this->b2a->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->b2a->Size = System::Drawing::Size(133, 34);
+			this->b2a->TabIndex = 11;
+			this->b2a->Tag = L"";
+			this->b2a->Text = L"0";
+			this->b2a->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// b2ab
+			// 
+			this->b2ab->AutoSize = true;
+			this->b2ab->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b2ab->ForeColor = System::Drawing::Color::Black;
+			this->b2ab->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->b2ab->Location = System::Drawing::Point(26, 136);
+			this->b2ab->Name = L"b2ab";
+			this->b2ab->Size = System::Drawing::Size(99, 31);
+			this->b2ab->TabIndex = 28;
+			this->b2ab->Text = L"b2 - ";
+			this->b2ab->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// b3a
+			// 
+			this->b3a->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->b3a->Enabled = false;
+			this->b3a->Font = (gcnew System::Drawing::Font(L"Courier New", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b3a->Location = System::Drawing::Point(131, 180);
+			this->b3a->Name = L"b3a";
+			this->b3a->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->b3a->Size = System::Drawing::Size(133, 34);
+			this->b3a->TabIndex = 12;
+			this->b3a->Tag = L"";
+			this->b3a->Text = L"0";
+			this->b3a->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// b1ab
+			// 
+			this->b1ab->AutoSize = true;
+			this->b1ab->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->b1ab->ForeColor = System::Drawing::Color::Black;
+			this->b1ab->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->b1ab->Location = System::Drawing::Point(26, 88);
+			this->b1ab->Name = L"b1ab";
+			this->b1ab->Size = System::Drawing::Size(99, 31);
+			this->b1ab->TabIndex = 27;
+			this->b1ab->Text = L"b1 - ";
+			this->b1ab->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSalmon;
-			this->ClientSize = System::Drawing::Size(708, 490);
+			this->ClientSize = System::Drawing::Size(1202, 498);
+			this->Controls->Add(this->Errors);
 			this->Controls->Add(this->solveButton);
 			this->Controls->Add(this->solution);
 			this->Controls->Add(this->x33);
@@ -546,13 +809,15 @@ namespace NumericalMethods {
 			this->Controls->Add(this->a33);
 			this->Controls->Add(this->b34);
 			this->Controls->Add(this->a11);
-			this->MinimumSize = System::Drawing::Size(726, 537);
+			this->MinimumSize = System::Drawing::Size(1220, 545);
 			this->Name = L"MainForm";
 			this->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->Text = L"Gauss Method";
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->solution->ResumeLayout(false);
 			this->solution->PerformLayout();
+			this->Errors->ResumeLayout(false);
+			this->Errors->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -563,8 +828,8 @@ namespace NumericalMethods {
 	private: System::Void solveButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		array<TextBox^>^ textBoxes = gcnew array<TextBox^> {a11, a12, a13, b14,
-															a21, a22, a23, b24,
-															a31, a32, a33, b34};
+			a21, a22, a23, b24,
+			a31, a32, a33, b34};
 		array<array<double>^>^ matrix;
 		array<double>^ x = gcnew array<double>(N);
 
@@ -574,13 +839,36 @@ namespace NumericalMethods {
 		partialPivot(matrix, N);
 		backSubstitute(matrix, N, x);
 
-		System::Diagnostics::Debug::WriteLine(System::String::Format("x1 = {0}", x[0]));
-		System::Diagnostics::Debug::WriteLine(System::String::Format("x2 = {0}", x[1]));
-		System::Diagnostics::Debug::WriteLine(System::String::Format("x3 = {0}", x[2]));
+		for (int i = 0; i < N; i++)
+			System::Diagnostics::Debug::WriteLine(System::String::Format("x{0} = {1}",i+1, x[i]));
 
 		x1->Text = roundToSignificantFigures(x[0], 3).ToString();
 		x2->Text = roundToSignificantFigures(x[1], 3).ToString();
 		x3->Text = roundToSignificantFigures(x[2], 3).ToString();
+
+		array<double>^ absoluteErrors = gcnew array<double>(N);
+		array<double>^ relativeErrors = gcnew array<double>(N);
+
+		checkAndAssignToMatrix(textBoxes, matrix);
+		for (int i = 0; i < N; i++)
+		{
+			absoluteErrors[i] = calculateAbsoluteError(matrix[i][N], checkApproximateResult(matrix[i], N, x));
+			relativeErrors[i] = calculateRelativeError(matrix[i][N], checkApproximateResult(matrix[i], N, x));
+		}
+
+		for (int i = 0; i < N; i++)
+		{
+			System::Diagnostics::Debug::WriteLine(System::String::Format("Absolute b{0} = {1}", i + 1, absoluteErrors[i]));
+			System::Diagnostics::Debug::WriteLine(System::String::Format("Relative b{0} = {1}%", i + 1, relativeErrors[i]));
+		}
+
+		b1a->Text = roundToSignificantFigures(absoluteErrors[0], 3).ToString();
+		b2a->Text = roundToSignificantFigures(absoluteErrors[1], 3).ToString();
+		b3a->Text = roundToSignificantFigures(absoluteErrors[2], 3).ToString();
+
+		b1r->Text = roundToSignificantFigures(relativeErrors[0], 3).ToString()+"%";
+		b2r->Text = roundToSignificantFigures(relativeErrors[1], 3).ToString()+"%";
+		b3r->Text = roundToSignificantFigures(relativeErrors[2], 3).ToString()+"%";
 	}
 
 	private: System::Boolean checkAndAssignToMatrix(array<TextBox^>^ textBoxes, array<array<double>^>^% matrix)
@@ -623,17 +911,17 @@ namespace NumericalMethods {
 				if (Math::Abs(A[j][i]) > Math::Abs(A[pivotRow][i]))
 					pivotRow = j;
 			}
-			
+
 			if (pivotRow != i)	// Swap the current row with the pivot row if needed
 			{
-				for (int j = i; j <= n; j++) 
+				for (int j = i; j <= n; j++)
 				{
 					double temp = A[i][j];
 					A[i][j] = A[pivotRow][j];
 					A[pivotRow][j] = temp;
 				}
 			}
-			
+
 			for (int j = i + 1; j < n; j++)	// Eliminate the current column in all subsequent rows
 			{
 				double factor = A[j][i] / A[i][i];
@@ -650,7 +938,7 @@ namespace NumericalMethods {
 			double sum = 0.0;
 			for (int j = i + 1; j < n; j++)	// Sum up all the values already found and multiply by their coefficients in the current row
 				sum += A[i][j] * x[j];
-			
+
 			x[i] = (A[i][n] - sum) / A[i][i];	// Subtract the sum from the augmented part and divide by the pivot element
 		}
 	}
@@ -668,15 +956,15 @@ namespace NumericalMethods {
 		int sign = 1; // The sign for each term of the determinant
 
 		for (int f = 0; f < n; f++) // Sort by the first row
-		{ 
+		{
 			int p = 0; // A row of the temporary matrix
 			for (int x = 1; x < n; x++)	// Exclude the first row of the original matrix
 			{
 				int q = 0; // A column of the temporal matrix
 				for (int y = 0; y < n; y++)	// Exclude column f of the original matrix
-				{ 
+				{
 					if (y == f)	// Skip column f
-						continue; 
+						continue;
 					temp[p][q] = matrix[x][y];
 					q++;
 				}
@@ -700,20 +988,40 @@ namespace NumericalMethods {
 		return true;
 	}
 
-	private: System::Double roundToSignificantFigures(double num, int n) 
+	private: System::Double roundToSignificantFigures(double num, int n)
 	{
 		if (num == 0.0)	// If the number is zero, return zero
 			return 0.0;
 
 		double d = Math::Ceiling(Math::Log10(Math::Abs(num)));	// Calculate the order of magnitude of the number using its logarithm
-																// Ceiling is used to round up to the nearest whole number
+		// Ceiling is used to round up to the nearest whole number
 		int power = n - (int)d;	// Calculate the power to shift the number to the right of the decimal point
-								// Needed to round the number to n significant figures
+		// Needed to round the number to n significant figures
 
 		double magnitude = Math::Pow(10, power); // Calculate the magnitude for the shifting process
 		double shifted = Math::Round(num * magnitude); // Shift the number to the right of the decimal point, round it,
-														// and then shift it back to its original position
+		// and then shift it back to its original position
 		return shifted / magnitude;	// Return the rounded number, shifted back to its original position
 	}
-	};
+
+	private: System::Double calculateAbsoluteError(System::Double exactValue, System::Double approximateValue) 
+	{
+		return Math::Abs(exactValue - approximateValue);
+	}
+
+	private: System::Double calculateRelativeError(System::Double exactValue, System::Double approximateValue) 
+	{
+		if (exactValue == 0)
+			throw gcnew System::DivideByZeroException("The exact value is zero, the relative error cannot be calculated");
+		return Math::Abs((exactValue - approximateValue) / exactValue);
+	}
+	
+	private: System::Double checkApproximateResult(array<double>^ row, int n, array<double>^ x)
+	{
+		double sum = 0;
+		for (int i = 0; i < n; i++)
+			sum += row[i] * x[i];
+		return sum;
+	}
+};
 }
