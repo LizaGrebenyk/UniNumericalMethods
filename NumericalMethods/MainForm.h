@@ -839,12 +839,16 @@ namespace NumericalMethods
 		partialPivot(matrix, N);
 		backSubstitute(matrix, N, x);
 
+		array<double>^ xRounded = gcnew array<double>(N);
 		for (int i = 0; i < N; i++)
-			System::Diagnostics::Debug::WriteLine(System::String::Format("x{0} = {1}",i+1, x[i]));
+		{
+			System::Diagnostics::Debug::WriteLine(System::String::Format("x{0} = {1}", i + 1, x[i]));
+			xRounded[i] = roundToSignificantFigures(x[i], 3);
+		}
 
-		x1->Text = roundToSignificantFigures(x[0], 3).ToString();
-		x2->Text = roundToSignificantFigures(x[1], 3).ToString();
-		x3->Text = roundToSignificantFigures(x[2], 3).ToString();
+		x1->Text = xRounded[0].ToString();
+		x2->Text = xRounded[1].ToString();
+		x3->Text = xRounded[2].ToString();
 
 		array<double>^ absoluteErrors = gcnew array<double>(N);
 		array<double>^ relativeErrors = gcnew array<double>(N);
@@ -854,12 +858,10 @@ namespace NumericalMethods
 		{
 			absoluteErrors[i] = calculateAbsoluteError(matrix[i][N], checkApproximateResult(matrix[i], N, x));
 			relativeErrors[i] = calculateRelativeError(matrix[i][N], checkApproximateResult(matrix[i], N, x));
-		}
-
-		for (int i = 0; i < N; i++)
-		{
 			System::Diagnostics::Debug::WriteLine(System::String::Format("Absolute b{0} = {1}", i + 1, absoluteErrors[i]));
 			System::Diagnostics::Debug::WriteLine(System::String::Format("Relative b{0} = {1}%", i + 1, relativeErrors[i]));
+			absoluteErrors[i] = calculateAbsoluteError(matrix[i][N], checkApproximateResult(matrix[i], N, xRounded));
+			relativeErrors[i] = calculateRelativeError(matrix[i][N], checkApproximateResult(matrix[i], N, xRounded));
 		}
 
 		b1a->Text = roundToSignificantFigures(absoluteErrors[0], 3).ToString();
