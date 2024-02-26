@@ -3,11 +3,13 @@
 #include <vector>
 #include <cmath>
 #include <limits>
+#include <algorithm>
 
 using namespace std;
 using matrix = vector<vector<double>>;
 
 bool checkConvergence(const matrix&);
+void maximizeDiagonal(matrix&, vector<double>&);
 vector<double> simpleIterationMethod(matrix&, vector<double>, double, vector<double>);
 double calculateDeterminant(const matrix&);
 bool checkDeterminant(const matrix&, double);
@@ -29,6 +31,7 @@ void main()
 
     printSystem(matrix, b, x0);
 
+    maximizeDiagonal(matrix, b);
     if (!checkConvergence(matrix) || checkDeterminant(matrix,epsilon))
     {
         cout << "\033[31mThe system is not convergent or has no solutions. Check the convergence conditions\033[31m" << endl;
@@ -63,6 +66,32 @@ bool checkConvergence(const matrix& mat)
     return true;    // The system is convergent
 }
 
+void maximizeDiagonal(matrix& mat, vector<double>& b) 
+{
+    int n = mat.size();
+
+    for (int i = 0; i < n; ++i) 
+    {
+        int maxRow = i;
+        double maxElem = abs(mat[i][i]);
+
+        for (int j = i + 1; j < n; j++) // Find the maximum element in a column
+        {
+            if (abs(mat[j][i]) > maxElem) 
+            {
+                maxElem = abs(mat[j][i]);
+                maxRow = j;
+            }
+        }
+
+        if (maxRow != i)    // Swap the rows of the matrix if we found a larger element
+        {
+            swap(mat[i], mat[maxRow]);
+            swap(b[i], b[maxRow]);
+        }
+    }
+}
+
 // A function for solving a system of linear equations by the simple iteration method
 vector<double> simpleIterationMethod(matrix& mat, vector<double> b, double epsilon, vector<double> x0)
 {
@@ -83,28 +112,23 @@ vector<double> simpleIterationMethod(matrix& mat, vector<double> b, double epsil
                     sum -= mat[i][j] * prevX[j];
             }
             x0[i] = round((sum / mat[i][i]) * 1000) / 1000.0;
+            //x0[i] = sum / mat[i][i];
         }
 
-        /*if (iterationCount == 1)
+        double maxD = abs(x0[0] - prevX[0]);
+        for (int i = 1; i < n; i++)
         {
-            prevX = x0;
-            continue;
-        }*/
-
-        flag = false;
-        for (int i = 0; i < n; i++)
-        {
-            if (abs(x0[i] - prevX[i]) >= epsilon)
-            {
-                flag = true;
-                //break;
-            }
+            if (abs(x0[i] - prevX[i]) > maxD)
+                maxD = abs(x0[i] - prevX[i]);
         }
+
+        if (maxD < epsilon)
+            flag = false;
 
         prevX = x0; // Preparing for the next iteration
     }
 
-    cout << "\nNumber of iterations: \033[36m" << iterationCount << "\033[0m\n";
+    cout << "Number of iterations: \033[36m" << iterationCount << "\033[0m\n\n";
     return x0;
 }
 
