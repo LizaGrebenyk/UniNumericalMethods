@@ -1,4 +1,4 @@
-# Numeriacal methods exercises
+# Numerical methods exercises
 
 Lr1 - solving a system of linear equations by the Gauss method with absolute and relative errors, performed in WinForms
 
