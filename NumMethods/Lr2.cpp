@@ -6,7 +6,7 @@
 #include <algorithm>
 
 using namespace std;
-using matrix = vector<vector<double>>;
+using matrix = vector<vector<double>>;  // Define the type matrix for readability
 
 bool checkConvergence(const matrix&);
 void maximizeDiagonal(matrix&, vector<double>&);
@@ -54,13 +54,14 @@ bool checkConvergence(const matrix& mat)
 {
     for (int i = 0; i < mat.size(); i++)
     {
-        double sum = 0;
+        double sum = 0; // Sum of the absolute values of the off-diagonal elements in the row
         for (int j = 0; j < mat[i].size(); j++)
         {
-            if (i != j)
+            if (i != j) // If not the diagonal element, add to sum
                 sum += abs(mat[i][j]);
         }
-        if (abs(mat[i][i]) <= sum)
+        
+        if (abs(mat[i][i]) <= sum)  // If the diagonal element is not strictly greater than the sum, the matrix does not satisfy the diagonal dominance condition
             return false;   // The system is not convergent
     }
     return true;    // The system is convergent
@@ -70,16 +71,16 @@ void maximizeDiagonal(matrix& mat, vector<double>& b)
 {
     int n = mat.size();
 
-    for (int i = 0; i < n; ++i) 
+    for (int i = 0; i < n; i++) // Iterate over each row of the matrix
     {
-        int maxRow = i;
-        double maxElem = abs(mat[i][i]);
+        int maxRow = i; // Assume the current row has the maximum element on the diagonal
+        double maxElem = abs(mat[i][i]);    // Get the absolute value of the current diagonal element
 
-        for (int j = i + 1; j < n; j++) // Find the maximum element in a column
+        for (int j = i + 1; j < n; j++) // Find the maximum element in the current column below the diagonal
         {
             if (abs(mat[j][i]) > maxElem) 
             {
-                maxElem = abs(mat[j][i]);
+                maxElem = abs(mat[j][i]);   // Update the maximum element
                 maxRow = j;
             }
         }
@@ -96,40 +97,40 @@ void maximizeDiagonal(matrix& mat, vector<double>& b)
 vector<double> simpleIterationMethod(matrix& mat, vector<double> b, double epsilon, vector<double> x0)
 {
     int n = b.size();
-    vector<double> prevX = x0;
-    bool flag = true;
+    vector<double> prevX = x0;  // Previous iteration values
+    bool flag = true;   // Control flag for the loop
     int iterationCount = 0;
 
     while (flag)
     {
         iterationCount++;
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) // Iterate through each equation
         {
-            double sum = b[i];
+            double sum = b[i];  // Start with the independent term of the equation
             for (int j = 0; j < n; j++)
             {
                 if (i != j)
-                    sum -= mat[i][j] * prevX[j];
+                    sum -= mat[i][j] * prevX[j];    // Subtract the known values from the previous iteration
             }
-            x0[i] = round((sum / mat[i][i]) * 1000) / 1000.0;
+            x0[i] = round((sum / mat[i][i]) * 1000) / 1000.0;   // Calculate the new value of x_i and round to 3 decimal places
             //x0[i] = sum / mat[i][i];
         }
 
-        double maxD = abs(x0[0] - prevX[0]);
+        double maxD = abs(x0[0] - prevX[0]);    // Initialize max difference with the first element
         for (int i = 1; i < n; i++)
         {
-            if (abs(x0[i] - prevX[i]) > maxD)
+            if (abs(x0[i] - prevX[i]) > maxD)   // Find the maximum absolute difference between the new and old values
                 maxD = abs(x0[i] - prevX[i]);
         }
 
-        if (maxD < epsilon)
+        if (maxD < epsilon) // If the maximum difference is less than epsilon, the method has converged
             flag = false;
 
-        prevX = x0; // Preparing for the next iteration
+        prevX = x0; // Prepare for the next iteration
     }
 
     cout << "Number of iterations: \033[36m" << iterationCount << "\033[0m\n\n";
-    return x0;
+    return x0;  // Return the final values
 }
 
 double calculateDeterminant(const matrix& mat) 
@@ -137,30 +138,30 @@ double calculateDeterminant(const matrix& mat)
     int dimension = mat.size();
     double determinant = 0;
 
-    if (dimension == 1)
+    if (dimension == 1) // Base case for a 1x1 matrix
         return mat[0][0];
 
-    if (dimension == 2)
+    if (dimension == 2) // Base case for a 2x2 matrix
         return mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0];
 
     for (int i = 0; i < dimension; i++) 
     {
-        matrix subMatrix(dimension - 1, vector<double>(dimension - 1)); // Creating a matrix of smaller size (n-1)x(n-1)
+        matrix subMatrix(dimension - 1, vector<double>(dimension - 1)); // Create a (n-1)x(n-1) matrix for the submatrix
 
-        for (int subRow = 1; subRow < dimension; subRow++) 
+        for (int subRow = 1; subRow < dimension; subRow++)  // Fill the submatrix excluding the current row and column
         {
             for (int subCol = 0; subCol < dimension; subCol++) 
             {
                 if (subCol < i)
-                    subMatrix[subRow - 1][subCol] = mat[subRow][subCol];
+                    subMatrix[subRow - 1][subCol] = mat[subRow][subCol];    // Copy elements from the left of the pivot
                 else if (subCol > i)
-                    subMatrix[subRow - 1][subCol - 1] = mat[subRow][subCol];
+                    subMatrix[subRow - 1][subCol - 1] = mat[subRow][subCol];    // Copy elements from the right of the pivot
             }
         }
 
-        double subDeterminant = calculateDeterminant(subMatrix);    // Using recursion to calculate the determinant of a smaller matrix
+        double subDeterminant = calculateDeterminant(subMatrix);    // Recursively calculate the determinant of the submatrix
 
-        determinant += (i % 2 == 0 ? 1 : -1) * mat[0][i] * subDeterminant;  // Add or subtract the calculated determinant depending on the position
+        determinant += (i % 2 == 0 ? 1 : -1) * mat[0][i] * subDeterminant;  // Add or subtract the subDeterminant, based on the column index
     }
 
     return determinant;
@@ -169,7 +170,7 @@ double calculateDeterminant(const matrix& mat)
 bool checkDeterminant(const matrix& mat, double epsilon) 
 {
     double det = calculateDeterminant(mat);
-    return abs(det) < epsilon;
+    return abs(det) < epsilon;  // Check if the determinant is close to zero
 }
 
 double promptDoubleInput(const string& promptMessage) 
