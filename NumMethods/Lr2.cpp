@@ -46,7 +46,7 @@ void main()
 
     cout << "\nAbsolute errors:" << endl;
     for (int i = 0; i < matrix.size(); i++)
-        cout << "b" << i + 1 << " = \033[43m" << calculateAbsoluteError(b[i], calculateApproximateValue(matrix[i], result)) << "\033[0m\n";
+        cout << "b" << i + 1 << " = \033[43m " << calculateAbsoluteError(b[i], calculateApproximateValue(matrix[i], result)) << " \033[0m\n";
 }
 
 // Function for checking system convergence
@@ -201,15 +201,15 @@ void printSystem(matrix& mat, vector<double> b, vector<double> x0)
     for (int i = 0; i < mat.size(); i++)
     {
         for (int j = 0; j < mat[i].size(); j++)
-            cout << (j == 0 ? "\033[32m" : " + \033[32m") << mat[i][j] << "x" << (j + 1)<<"\033[0m";
+            cout << (j == 0 ? "\033[32m" : " + \033[32m") << mat[i][j] << "\033[0mx" << (j + 1);
         cout << " = \033[34m" << b[i] << "\033[0m\n";
     }
     cout << endl;
 
-    cout << "Initial approximation: \nx0 = {\033[33m";
+    cout << "Initial approximation: \nx0 = {";
     for (int i = 0; i < x0.size(); i++)
-        cout << x0[i] << (i == x0.size() - 1 ? " " : "; ");
-    cout << "\033[0m}\n" << endl;
+        cout << "\033[33m" << x0[i] << (i == x0.size() - 1 ? " \033[0m" : "\033[0m; ");
+    cout << "}\n" << endl;
 }
 
 double calculateAbsoluteError(double trueValue, double approximateValue) 
