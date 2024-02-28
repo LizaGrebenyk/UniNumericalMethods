@@ -61,7 +61,7 @@ bool checkConvergence(const matrix& mat)
                 sum += abs(mat[i][j]);
         }
         
-        if (abs(mat[i][i]) <= sum)  // If the diagonal element is not strictly greater than the sum, the matrix does not satisfy the diagonal dominance condition
+        if (abs(mat[i][i]) < sum)  // If the diagonal element is not strictly greater than the sum, the matrix does not satisfy the diagonal dominance condition
             return false;   // The system is not convergent
     }
     return true;    // The system is convergent
