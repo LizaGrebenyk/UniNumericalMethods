@@ -16,7 +16,7 @@ int main()
         b = -1.5, 
         c = -4.6, 
         d = 0.5;
-    double epsilon = 10e-4, // Tolerance for the root finding process
+    double epsilon = 1e-4, // Tolerance for the root finding process
         left = -100, right = 100,   // Search bounds for the root
         step = 0.1; // Step size for interval search
 
