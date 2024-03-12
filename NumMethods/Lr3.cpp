@@ -53,7 +53,7 @@ double dichotomyMethod(double a, double b, double c, double d, double left, doub
     if (!hasRoot(a, b, c, d, left, right))
     {
         cout << "\033[31mThere is no root in this interval\033[0m" << endl;
-        return 0;
+        exit(-1);
     }
 
     int iterationCount = 0;
@@ -95,6 +95,9 @@ vector<pair<double, double>> findIntervals(double a, double b, double c, double 
 
         left = right;
     }
+
+    if(intervals.empty())
+        intervals.push_back({ left, right });
 
     return intervals;
 }
