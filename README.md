@@ -9,3 +9,5 @@ Lr3 - solving a cubic equation by the dichotomy method with absolute errors, per
 Lr4-5 - implementation of methods for approximation and interpolation of given points and plotting graphs for them, performed in python
 
 Lr6 - implementation of rectangle, trapezoid, and Simpson methods for finding the approximate value of a definite integral, performed in pure c++
+
+Lr7 - solving the Cauchy problem by the Euler and Runge-Kutt methods, performed in python
